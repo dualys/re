@@ -1,0 +1,22 @@
+[package]
+name = "re"
+description = "kernel: low-level CPU control, interrupts, and memory"
+keywords = ["re", "kernel", "supervisor", "memory"]
+license.workspace = true
+edition.workspace = true
+version.workspace = true
+
+[features]
+default = ["us"]
+fr = []
+us = []
+
+
+[dependencies]
+lazy_static = { workspace = true }
+x86_64 = { workspace = true }
+limine = { workspace = true }
+xmas-elf = { workspace = true }
+os-terminal = { workspace = true }
+linked_list_allocator = { workspace = true }
+ra = { workspace = true }
