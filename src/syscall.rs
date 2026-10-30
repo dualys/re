@@ -1,7 +1,6 @@
 use crate::gdt::GDT;
 use core::arch::naked_asm;
 use core::sync::atomic::{AtomicU64, Ordering};
-use ra::TERMINAL;
 use x86_64::registers::model_specific::{Efer, EferFlags, LStar, SFMask, Star};
 use x86_64::registers::rflags::RFlags;
 
@@ -78,7 +77,7 @@ pub extern "C" fn handle_syscall(syscall_no: u64, arg1: u64, arg2: u64, arg3: u6
                 core::slice::from_raw_parts(ptr, len)
             };
 
-            if let Some(ref mut terminal) = *TERMINAL.lock() {
+            if let Some(ref mut terminal) = *wuu::TERMINAL.lock() {
                 terminal.process(slice);
             }
             0

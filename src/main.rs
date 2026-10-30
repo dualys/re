@@ -55,13 +55,15 @@ pub extern "C" fn _start(_info: *const ()) -> ! {
             ptr::write_bytes(framebuffer.address(), 0, size);
         }
 
-        let screen_data = ra::ScreenData {
+        let screen_data = wuu::ScreenData {
             ptr: framebuffer.address().cast::<u8>(),
             width: framebuffer.width,
             height: framebuffer.height,
             pitch: framebuffer.pitch,
         };
-        *ra::TERMINAL.lock() = Some(Terminal::new(screen_data, Box::new(BitmapFont)));
+        let terminal_instance = Terminal::new(screen_data, Box::new(BitmapFont));
+        // 2. Tu le donnes à ton outil "wuu" (pour ses macros ok!, ko!, etc.)
+        *wuu::TERMINAL.lock() = Some(terminal_instance);
     }
 
     // 4. Chargement du module ELF Maât et préparation de l'espace utilisateur

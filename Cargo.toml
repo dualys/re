@@ -11,7 +11,6 @@ default = ["us"]
 fr = []
 us = []
 
-
 [dependencies]
 lazy_static = { workspace = true }
 x86_64 = { workspace = true }
@@ -19,4 +18,4 @@ limine = { workspace = true }
 xmas-elf = { workspace = true }
 os-terminal = { workspace = true }
 linked_list_allocator = { workspace = true }
-ra = { workspace = true }
+wuu = { workspace = true }
